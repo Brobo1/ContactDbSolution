@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using ContactDbLib.DbModels;
 
 namespace ContactDbLib
 {
@@ -19,16 +20,15 @@ namespace ContactDbLib
             Contact newContact = new(ssn, firstName, lastName);
 
             return 123;
-        
         }
         static public void ConnectionMethod()
         {
             using SqlConnection Connect = new(_connectionString);
             SqlCommand command = Connect.CreateCommand();
-            command.CommandText = 
+            command.CommandText =
                 "SELECT Id,Ssn,FirstName,LastName \n" +
                 "FROM Contact \n" +
-                "WHERE "
+                "WHERE ";
 
 
 
