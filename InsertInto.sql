@@ -3,6 +3,7 @@
 --personnummer), FirstName og LastName. Sørg for at hvert element i SSN feltet er unikt. 
 --Ingen felt skal tillate nullverdier. Alt unntatt ID (løpenummer) skal være varchar.
 --Lagre SQL for dette i et CreateTable.sql script!
+Create database ContactDb; 
 CREATE TABLE Contact(
 Id INT IDENTITY(1,1),
 Ssn VARCHAR(128) UNIQUE NOT NULL,

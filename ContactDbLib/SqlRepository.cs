@@ -25,21 +25,33 @@ namespace ContactDbLib
             command.CommandText =
                 "SELECT Id, \n" +
                 "FROM Contact \n" +
-                "WHERE ssn = @ssn AND firstName = @firstName AND lastName = @lastName";
+                "WHERE ";
 
-            command.Parameters.AddWithValue("@Ssn", ssn);
-            command.Parameters.AddWithValue("@firstName", firstName);
-            command.Parameters.AddWithValue("@lastName", lastName);
+
+
+
+        }
+        //Contact? ReadContact(int id)
+
+        static public List<Contact> ReadAllContacts(){
+            List<Contact> allContacts = new();
+
+            using SqlConnection Connect = new(_connectionString);
+            SqlCommand command = Connect.CreateCommand();
+            command.CommandText =
+                "SELECT SSN, FirstName, LastName \n" +
+                "FROM Contact";
 
             Connect.Open();
             using SqlDataReader reader = command.ExecuteReader();
 
-            return (int)reader[0];
+            while (reader.Read())
+            {
+                allContacts.Add(new(reader[0].ToString() ?? "", reader[1].ToString() ?? "", reader[2].ToString() ?? ""));
+            }
+
+            return allContacts;
         }
-
-        //Contact? ReadContact(int id)
-
-        //List<Contact> ReadAllContacts()
 
         static bool DeleteContact(int id)
         {
@@ -56,7 +68,12 @@ namespace ContactDbLib
             else { return false; }
         }
 
-        //bool UpdateContact(int id, string ssn, string firstName, string lastName)
+        static bool UpdateContact(int id, string ssn, string firstName, string lastName) {
+            using SqlConnection Connect = new(_connectionString);
+            SqlCommand          command = Connect.CreateCommand();
+            command.CommandText = " ";
+            return true;
+        }
 
 
 
