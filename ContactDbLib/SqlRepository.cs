@@ -36,7 +36,25 @@ namespace ContactDbLib
         }
         //Contact? ReadContact(int id)
 
-        //List<Contact> ReadAllContacts()
+        static public List<Contact> ReadAllContacts(){
+            List<Contact> allContacts = new();
+
+            using SqlConnection Connect = new(_connectionString);
+            SqlCommand command = Connect.CreateCommand();
+            command.CommandText =
+                "SELECT SSN, FirstName, LastName \n" +
+                "FROM Contact";
+
+            Connect.Open();
+            using SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                allContacts.Add(new(reader[0].ToString() ?? "", reader[1].ToString() ?? "", reader[2].ToString() ?? ""));
+            }
+
+            return allContacts;
+        }
 
         //bool DeleteContact(int id)
 
