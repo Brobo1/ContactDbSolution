@@ -58,7 +58,12 @@ namespace ContactDbLib
 
         //bool DeleteContact(int id)
 
-        //bool UpdateContact(int id, string ssn, string firstName, string lastName)
+        static bool UpdateContact(int id, string ssn, string firstName, string lastName) {
+            using SqlConnection Connect = new(_connectionString);
+            SqlCommand          command = Connect.CreateCommand();
+            command.CommandText = " ";
+            return true;
+        }
 
 
 
