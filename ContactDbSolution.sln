@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactDbLib", "ContactDbLib\ContactDbLib.csproj", "{4EBDF4AB-F929-4CD0-92B4-D83A660F180D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactDbApp", "ContactDbApp\ContactDbApp.csproj", "{215923EF-A64C-47F2-B529-ECFB45DD7339}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4EBDF4AB-F929-4CD0-92B4-D83A660F180D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EBDF4AB-F929-4CD0-92B4-D83A660F180D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EBDF4AB-F929-4CD0-92B4-D83A660F180D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{215923EF-A64C-47F2-B529-ECFB45DD7339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{215923EF-A64C-47F2-B529-ECFB45DD7339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{215923EF-A64C-47F2-B529-ECFB45DD7339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{215923EF-A64C-47F2-B529-ECFB45DD7339}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
