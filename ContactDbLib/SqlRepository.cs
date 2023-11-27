@@ -31,7 +31,6 @@ namespace ContactDbLib
             command.Parameters.AddWithValue("@firstName", firstName);
             command.Parameters.AddWithValue("@lastName", lastName);
 
-
             Connect.Open();
             using SqlDataReader reader = command.ExecuteReader();
 
@@ -42,7 +41,20 @@ namespace ContactDbLib
 
         //List<Contact> ReadAllContacts()
 
-        //bool DeleteContact(int id)
+        static bool DeleteContact(int id)
+        {
+            using SqlConnection connection = new(_connectionString);
+            connection.Open();
+            using SqlCommand command = connection.CreateCommand();
+            command.CommandText = "DELETE FROM Contacts " +
+                "WHERE id = @id";
+
+            int rowsAffected = command.ExecuteNonQuery();
+            if (rowsAffected >= 1)
+            { return true; }
+
+            else { return false; }
+        }
 
         //bool UpdateContact(int id, string ssn, string firstName, string lastName)
 
