@@ -6,11 +6,9 @@ public class ContactInformation {
 	public string AddsReservation { get; set; }
 	public int    ContactFk       { get; set; }
 
-	public ContactInformation(int id, string info, string addsReservation, int contactFk) {
-		Id              = id;
+	public ContactInformation(string info, string addsReservation) {
 		Info            = info;
 		AddsReservation = addsReservation;
-		ContactFk       = contactFk;
 	}
 
 	public override string ToString() {
