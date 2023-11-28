@@ -33,7 +33,7 @@ namespace ContactDbLib {
 			int id;
 			if (reader.Read()) 
 			{
-				id = (int)reader[0];
+				id = (int)(decimal)reader[0];
 				return id;
 			}
 			else { return -1; }
