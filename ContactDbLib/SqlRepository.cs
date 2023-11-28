@@ -59,7 +59,7 @@ namespace ContactDbLib {
 		}
         static public Contact ReadContact(int id)
         {
-           
+
             using SqlConnection connection = new(_connectionString);
 
             using SqlCommand command = connection.CreateCommand();
