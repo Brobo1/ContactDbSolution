@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -104,8 +105,7 @@ namespace ContactDbLib {
 				return false;
 			}
 		}
-
-		public static bool UpdateContact(int id, string firstName, string lastName) {
+		/*public static bool UpdateContact(int id, string firstName, string lastName) {
 			using SqlConnection connect = new(_connectionString);
 			connect.Open();
 			SqlCommand command = connect.CreateCommand();
@@ -122,6 +122,27 @@ namespace ContactDbLib {
 			}
 			return false;
 			
+		}*/
+		
+		public static bool UpdateContactNew(Contact contact) {
+			SqlConnection    connect = new(_connectionString);
+			connect.Open();
+			using SqlCommand command = connect.CreateCommand();
+			command.CommandText = "update Contact \n"                                +
+			                      "set FirstName = @firstName, LastName = @lastName \n" +
+			                      "where Ssn = @ssn \n";
+			
+			command.Parameters.AddWithValue("@Ssn",       contact.SSN);
+			command.Parameters.AddWithValue("@firstName", contact.FirstName);
+			command.Parameters.AddWithValue("@lastName",       contact.LastName);
+			int           rowsAffected = command.ExecuteNonQuery();
+			//contact.Id = (int)(decimal)command.ExecuteReader()[0];
+			
+			Console.WriteLine(contact.Id);
+			if (rowsAffected > 0) {
+				return true;
+			}
+			return false;
 		}
 	}
 }

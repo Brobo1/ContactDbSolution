@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ContactDbLib;
+using ContactDbLib.DbModels;
+using Microsoft.Data.SqlClient;
+
 namespace ContactDbApp
 {
     internal class Program
@@ -20,9 +23,11 @@ namespace ContactDbApp
            //     Console.WriteLine(item.ToString());
           //  }
         
-            var contact = SqlRepository.ReadContact(2);
-            Console.WriteLine(contact?.ToString());
-        
+            //var contact = SqlRepository.ReadContact(2);
+            //Console.WriteLine(contact?.ToString());
+            Contact cont = new("54176413124", "Barne", "marne");
+            SqlRepository.UpdateContactNew(cont);
+
         }
     }
 }
