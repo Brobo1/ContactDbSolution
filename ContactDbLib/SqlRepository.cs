@@ -57,7 +57,7 @@ namespace ContactDbLib {
 
 			return allContacts;
 		}
-        static public Contact ReadContact(int id)
+        static public Contact? ReadContact(int id)
         {
 
             using SqlConnection connection = new(_connectionString);
@@ -69,11 +69,16 @@ namespace ContactDbLib {
 
 			command.Parameters.AddWithValue("@id", id);
 
+			
 			connection.Open();
             using SqlDataReader reader = command.ExecuteReader();
-
-			return new(reader[0].ToString() ?? "", reader[1].ToString() ?? "", reader[2].ToString() ?? "");
-
+			if (reader.Read())
+			{
+				return new(reader[0].ToString() ?? "", reader[1].ToString() ?? "", reader[2].ToString() ?? "");
+			}
+			else {
+				return null;
+			}
         }
 
         public static bool DeleteContact(int id) {
