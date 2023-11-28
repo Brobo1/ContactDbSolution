@@ -181,5 +181,6 @@ namespace ContactDbLib {
 
             return false;
         }
+        #endregion
     }
 }
