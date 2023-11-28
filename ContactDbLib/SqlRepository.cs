@@ -70,7 +70,7 @@ namespace ContactDbLib {
 			}
 		}
 
-		public static bool UpdateContact(int id, string ssn, string firstName, string lastName) {
+		public static bool UpdateContact(int id, string firstName, string lastName) {
 			using SqlConnection connect = new(_connectionString);
 			connect.Open();
 			SqlCommand command = connect.CreateCommand();
