@@ -39,6 +39,8 @@ namespace ContactDbApp {
 			//Console.WriteLine(SqlRepository.UpdateContact(NewData)); 
 
 			//SqlRepository.DeleteAddress(1);
-        }
-    }
+			//SqlRepository.CreateAddress("Kongsburger veien", "Kongsburger", "1653");
+			SqlRepository.UpdateAddress(1, "kognsebgig", "oijergqwe", "1253");
+		}
+	}
 }

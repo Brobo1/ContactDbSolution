@@ -4,6 +4,7 @@
 --Ingen felt skal tillate nullverdier. Alt unntatt ID (løpenummer) skal være varchar.
 --Lagre SQL for dette i et CreateTable.sql script!
 --Create database ContactDb;
+
 --CREATE TABLE Contact
 --(
 --    Id        INT IDENTITY (1,1),
@@ -12,35 +13,37 @@
 --    LastName  VARCHAR(128)        NOT NULL,
 --    PRIMARY KEY (Id)
 --);
-
+--
+--CREATE TABLE ContactInformation
+--(
+--    Id               INT IDENTITY (1,1),
+--    Info             VARCHAR(128) not null,
+--    AddsReservartion VARCHAR(128) not null,
+--    ContactId        INT          null,
+--    PRIMARY KEY (id),
+--    FOREIGN KEY (ContactId) REFERENCES Contact (Id),
+--)
+--
 --create table Address
 --(
- --   Id     INT IDENTITY (1,1),
-  --  Street VARCHAR(128) NOT NULL,
-  --  City   VARCHAR(128) NOT NULL,
+--    Id     INT IDENTITY (1,1),
+--    Street VARCHAR(128) NOT NULL,
+--    City   VARCHAR(128) NOT NULL,
 --    Zip    VARCHAR(128) NOT NULL,
 --    UNIQUE (Street, City, Zip),
 --    PRIMARY KEY (Id)
 --)
-
---Legg inn minst tre rader i tabellen.
-
+--
+----Legg inn minst tre rader i tabellen.
+--
 --INSERT INTO Contact(Ssn, FirstName, LastName)
 --VALUES (28120123123, 'Arne', 'Bretting'),
 --       (9876512345, 'Ole Tobias', 'Badstue'),
 --       (2225558834, 'Arman', 'Armani'),
 --       (435685336, 'Rene', 'Pathfinder')
+--
+----Lagre SQL for dette i et InsertInto.sql script!
 
---Lagre SQL for dette i et InsertInto.sql script!
-
-CREATE TABLE ContactInformation(
-Id INT IDENTITY(1,1),
-Info VARCHAR(128) not null,
-AddsReservartion VARCHAR(128) not null,
-ContactId INT null,
-PRIMARY KEY(id),
-FOREIGN KEY(ContactId) REFERENCES Contact(Id),
-)
 
 
 
