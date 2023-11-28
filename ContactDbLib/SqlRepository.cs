@@ -71,14 +71,23 @@ namespace ContactDbLib
             if (rowsAffected >= 1)
             { return true; }
 
-            else { return false; }
-        }
+		public static bool UpdateContact(int id, string ssn, string firstName, string lastName) {
+			using SqlConnection connect = new(_connectionString);
+			connect.Open();
+			SqlCommand command = connect.CreateCommand();
+			command.CommandText = "update Contact \n"                                        +
+			                      "set FirstName = '@firstName', LastName = '@firstName' \n" +
+			                      "where Id = @id";
 
-        static public bool UpdateContact(int id, string ssn, string firstName, string lastName) {
-            using SqlConnection Connect = new(_connectionString);
-            SqlCommand          command = Connect.CreateCommand();
-            command.CommandText = " ";
-            return true;
-        }
-    }
+			command.Parameters.AddWithValue("@firstName", firstName);
+			command.Parameters.AddWithValue("@lastName",  lastName);
+			command.Parameters.AddWithValue("@id",        id);
+			int rowsAffected = command.ExecuteNonQuery();
+			if (rowsAffected > 0 ) {
+				return true;
+			}
+			return false;
+			
+		}
+	}
 }
