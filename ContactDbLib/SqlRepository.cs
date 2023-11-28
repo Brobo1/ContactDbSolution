@@ -59,7 +59,7 @@ namespace ContactDbLib
             return allContacts;
         }
 
-        static bool DeleteContact(int id)
+        public static bool DeleteContact(int id)
         {
             using SqlConnection connection = new(_connectionString);
             connection.Open();
@@ -74,7 +74,7 @@ namespace ContactDbLib
             else { return false; }
         }
 
-        static bool UpdateContact(int id, string ssn, string firstName, string lastName) {
+        static public bool UpdateContact(int id, string ssn, string firstName, string lastName) {
             using SqlConnection Connect = new(_connectionString);
             SqlCommand          command = Connect.CreateCommand();
             command.CommandText = " ";
