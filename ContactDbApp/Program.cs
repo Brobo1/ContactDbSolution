@@ -24,14 +24,15 @@ namespace ContactDbApp
             //     Console.WriteLine(item.ToString());
             //  }
 
-            //var contact = SqlRepository.ReadContact(2);
-            //Console.WriteLine(contact?.ToString());
-            //Contact cont = new("54176413124", "Barne", "marne");
-            //SqlRepository.UpdateContactNew(cont);
+            // Contact contact = new("10101010101", "Alice", "Cooper");
+            //  SqlRepository.CreateContact(contact);
+            // Console.WriteLine(SqlRepository.UpdateContact(contact));
+            // SqlRepository.DeleteContact(1002);
 
-            Contact contact = new("10101010101", "Jethro", "Tull");
-            contact = SqlRepository.CreateContact(contact);
-            Console.WriteLine($"ID {contact.Id}, {contact}");
+
+
+
+
         }
     }
 }
