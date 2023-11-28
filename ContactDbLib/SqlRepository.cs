@@ -59,8 +59,28 @@ namespace ContactDbLib {
 
 			return allContacts;
 		}
+        static public Contact ReadContact(int id)
+        {
+           
 
-		public static bool DeleteContact(int id) {
+            using SqlConnection connection = new(_connectionString);
+
+            using SqlCommand command = connection.CreateCommand();
+            command.CommandText = " SELECT SSn,FirstName,LastName \n" +
+                "FROM Contact \n" +
+                "Where Id = @id;";
+
+			command.Parameters.AddWithValue("@id", id);
+
+			connection.Open();
+            using SqlDataReader reader = command.ExecuteReader();
+
+			return new(reader[0].ToString() ?? "", reader[1].ToString() ?? "", reader[2].ToString() ?? "");
+
+        }
+
+
+        public static bool DeleteContact(int id) {
 			using SqlConnection connection = new(_connectionString);
 			connection.Open();
 			using SqlCommand command = connection.CreateCommand();
