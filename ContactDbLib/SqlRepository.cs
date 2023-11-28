@@ -75,7 +75,7 @@ namespace ContactDbLib {
 			connect.Open();
 			SqlCommand command = connect.CreateCommand();
 			command.CommandText = "update Contact \n"                                        +
-			                      "set FirstName = '@firstName', LastName = '@firstName' \n" +
+			                      "set FirstName = @firstName, LastName = @lastName \n" +
 			                      "where Id = @id";
 
 			command.Parameters.AddWithValue("@firstName", firstName);
