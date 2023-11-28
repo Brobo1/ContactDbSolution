@@ -11,6 +11,8 @@ public class Address {
 		City   = city;
 		Zip    = zip;
 	}
-	
-	
+
+	public override string ToString() {
+		return $"{City} {Zip} {Street}";
+	}
 }
