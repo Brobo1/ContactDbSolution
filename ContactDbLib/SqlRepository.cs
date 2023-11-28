@@ -14,24 +14,29 @@ namespace ContactDbLib {
 			"Integrated Security = true";
 
 		static public int CreateContact(string ssn, string firstName, string lastName) {
-			Contact newContact = new(ssn, firstName, lastName);
+			//Contact newContact = new(ssn, firstName, lastName);
 
 			using SqlConnection Connect = new(_connectionString);
 
-			SqlCommand command = Connect.CreateCommand();
-			command.CommandText =
-				"SELECT Id, \n"   +
-				"FROM Contact \n" +
-				"WHERE ssn = @ssn AND firstName = @firstName AND lastName = @lastName";
+			SqlCommand MakeContact = Connect.CreateCommand();
+			MakeContact.CommandText =
+				"INSERT INTO Contact(ssn,firstname,lastname)" +
+				"VALUES (@ssn,@firstName,@lastName) \n"  +
 
-			command.Parameters.AddWithValue("@Ssn",       ssn);
-			command.Parameters.AddWithValue("@firstName", firstName);
-			command.Parameters.AddWithValue("@lastName",  lastName);
+				"SELECT SCOPE_IDENTITY() AS LastIdentityValue";
 
-			Connect.Open();
-			using SqlDataReader reader = command.ExecuteReader();
-
-			return (int)reader[0];
+			MakeContact.Parameters.AddWithValue("@Ssn",       ssn);
+			MakeContact.Parameters.AddWithValue("@firstName", firstName);
+			MakeContact.Parameters.AddWithValue("@lastName",  lastName);
+            Connect.Open();
+			using SqlDataReader reader = MakeContact.ExecuteReader();
+			int id;
+			if (reader.Read()) 
+			{
+				id = (int)reader[0];
+				return id;
+			}
+			else { return -1; }
 		}
 		//Contact? ReadContact(int id)
 
