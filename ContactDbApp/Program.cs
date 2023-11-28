@@ -33,6 +33,12 @@ namespace ContactDbApp
 
 
 
+            //Contact JethroTull = new("10101010101", "Jethro", "Tull");
+            //JethroTull = SqlRepository.CreateContact(JethroTull);
+            //Console.WriteLine($"ID {JethroTull.Id}, {JethroTull}");
+
+            //Contact NewData = new("10101010101", "Jethro", "Tull");
+            //Console.WriteLine(SqlRepository.UpdateContact(NewData)); 
         }
     }
 }
