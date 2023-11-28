@@ -13,15 +13,15 @@
 --    PRIMARY KEY (Id)
 --);
 
-create table Address
-(
-    Id     INT IDENTITY (1,1),
-    Street VARCHAR(128) NOT NULL,
-    City   VARCHAR(128) NOT NULL,
-    Zip    VARCHAR(128) NOT NULL,
-    UNIQUE (Street, City, Zip),
-    PRIMARY KEY (Id)
-)
+--create table Address
+--(
+ --   Id     INT IDENTITY (1,1),
+  --  Street VARCHAR(128) NOT NULL,
+  --  City   VARCHAR(128) NOT NULL,
+--    Zip    VARCHAR(128) NOT NULL,
+--    UNIQUE (Street, City, Zip),
+--    PRIMARY KEY (Id)
+--)
 
 --Legg inn minst tre rader i tabellen.
 
@@ -33,6 +33,14 @@ create table Address
 
 --Lagre SQL for dette i et InsertInto.sql script!
 
+CREATE TABLE ContactInformation(
+Id INT IDENTITY(1,1),
+Info VARCHAR(128) not null,
+AddsReservartion VARCHAR(128) not null,
+ContactId INT null,
+PRIMARY KEY(id),
+FOREIGN KEY(ContactId) REFERENCES Contact(Id),
+)
 
 
 
