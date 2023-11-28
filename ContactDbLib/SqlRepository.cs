@@ -14,7 +14,8 @@ namespace ContactDbLib {
 			"Database = ContactDb; "             +
 			"Integrated Security = true";
 
-		static public int CreateContact(string ssn, string firstName, string lastName) {
+        #region ContactMethods
+        static public int CreateContact(string ssn, string firstName, string lastName) {
 			using SqlConnection Connect = new(_connectionString);
 
 			SqlCommand MakeContact = Connect.CreateCommand();
@@ -138,8 +139,11 @@ namespace ContactDbLib {
 
 			return false;
 		}
+        #endregion
 
-		public static bool DeleteAddress(int id) 
+
+        #region AddressMethods
+        public static bool DeleteAddress(int id) 
 		{
 			SqlConnection connect = new(_connectionString);
 			using SqlCommand command = connect.CreateCommand();
@@ -147,6 +151,7 @@ namespace ContactDbLib {
 				"WHERE id = @id";
 			command.Parameters.AddWithValue("@id", id);
 
+			connect.Open();
 			int rowsAffected = command.ExecuteNonQuery();
 
 			if(rowsAffected  > 0 ) { return true;}
@@ -186,3 +191,29 @@ namespace ContactDbLib {
 
 
     }
+		public static bool UpdateAddress (int id, string street, string city, string zip)
+		{
+            SqlConnection connect = new(_connectionString);
+            using SqlCommand command = connect.CreateCommand();
+            command.CommandText = "UPDATE Address \n" +
+                                  "SET Street = @Street, City = @City, Zip = @Zip \n" +
+                                  "where Id = @Id \n";
+
+            command.Parameters.AddWithValue("@Id", id);
+            command.Parameters.AddWithValue("@Street", street);
+            command.Parameters.AddWithValue("@firstName", city);
+            command.Parameters.AddWithValue("@lastName", zip);
+            connect.Open();
+
+            int rowsAffected = command.ExecuteNonQuery();
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        #endregion
+    }
+}
