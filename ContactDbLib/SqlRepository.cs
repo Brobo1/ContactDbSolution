@@ -64,9 +64,9 @@ namespace ContactDbLib {
 			using SqlConnection connection = new(_connectionString);
 			connection.Open();
 			using SqlCommand command = connection.CreateCommand();
-			command.CommandText = "DELETE FROM Contacts " +
+			command.CommandText = "DELETE FROM Contact \n" +
 			                      "WHERE id = @id";
-
+			command.Parameters.AddWithValue("@id", id);
 			int rowsAffected = command.ExecuteNonQuery();
 			if (rowsAffected >= 1) {
 				return true;
@@ -75,7 +75,7 @@ namespace ContactDbLib {
 			}
 		}
 
-		public static bool UpdateContact(int id, string ssn, string firstName, string lastName) {
+		public static bool UpdateContact(int id, string firstName, string lastName) {
 			using SqlConnection connect = new(_connectionString);
 			connect.Open();
 			SqlCommand command = connect.CreateCommand();
