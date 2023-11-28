@@ -158,7 +158,28 @@ namespace ContactDbLib {
 		
 		}
 
+		public static bool UpdateAddress (int id, string street, string city, string zip)
+		{
+            SqlConnection connect = new(_connectionString);
+            using SqlCommand command = connect.CreateCommand();
+            command.CommandText = "UPDATE Address \n" +
+                                  "SET Street = @Street, City = @City, Zip = @Zip \n" +
+                                  "where Id = @Id \n";
 
-        #endregion
+            command.Parameters.AddWithValue("@Id", id);
+            command.Parameters.AddWithValue("@Street", street);
+            command.Parameters.AddWithValue("@firstName", city);
+            command.Parameters.AddWithValue("@lastName", zip);
+            connect.Open();
+
+            int rowsAffected = command.ExecuteNonQuery();
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
