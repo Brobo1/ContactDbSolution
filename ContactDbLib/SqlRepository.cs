@@ -14,7 +14,6 @@ namespace ContactDbLib {
 			"Integrated Security = true";
 
 		static public int CreateContact(string ssn, string firstName, string lastName) {
-			//Contact newContact = new(ssn, firstName, lastName);
 
 			using SqlConnection Connect = new(_connectionString);
 
@@ -38,7 +37,6 @@ namespace ContactDbLib {
 			}
 			else { return -1; }
 		}
-		//Contact? ReadContact(int id)
 
 		static public List<Contact> ReadAllContacts() {
 			List<Contact> allContacts = new();
@@ -82,7 +80,6 @@ namespace ContactDbLib {
 				return null;
 			}
         }
-
 
         public static bool DeleteContact(int id) {
 			using SqlConnection connection = new(_connectionString);
