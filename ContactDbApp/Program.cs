@@ -26,12 +26,12 @@ namespace ContactDbApp
 
             //var contact = SqlRepository.ReadContact(2);
             //Console.WriteLine(contact?.ToString());
-            Contact cont = new("54176413124", "Barne", "marne");
-            SqlRepository.UpdateContactNew(cont);
+            //Contact cont = new("54176413124", "Barne", "marne");
+            //SqlRepository.UpdateContactNew(cont);
 
-            Contact contact = new("10101010101", "Jethro", "Tull");
-            contact = SqlRepository.CreateContact(contact);
-            Console.WriteLine($"ID {contact.Id}, {contact}");
+            //Contact contact = new("10101010102", "King", "Diamond");
+            //contact = SqlRepository.CreateContact(contact);
+            //Console.WriteLine($"ID {contact.Id}, {contact}");
         }
     }
 }
