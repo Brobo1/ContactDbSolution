@@ -20,7 +20,6 @@ namespace ContactDbApp
             //    Console.WriteLine(item.ToString());
 
 
-            }
         }
     }
 }
