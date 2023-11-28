@@ -146,6 +146,7 @@ namespace ContactDbLib {
 				"WHERE id = @id";
 			command.Parameters.AddWithValue("@id", id);
 
+			connect.Open();
 			int rowsAffected = command.ExecuteNonQuery();
 
 			if(rowsAffected  > 0 ) { return true;}

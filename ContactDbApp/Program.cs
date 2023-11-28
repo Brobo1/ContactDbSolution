@@ -21,25 +21,24 @@ namespace ContactDbApp {
 			//     Console.WriteLine(item.ToString());
 			//  }
 
-            // Contact contact = new("10101010101", "Alice", "Cooper");
-            //  SqlRepository.CreateContact(contact);
-            // Console.WriteLine(SqlRepository.UpdateContact(contact));
-            // SqlRepository.DeleteContact(1002);
+			// Contact contact = new("10101010101", "Alice", "Cooper");
+			//  SqlRepository.CreateContact(contact);
+			// Console.WriteLine(SqlRepository.UpdateContact(contact));
+			// SqlRepository.DeleteContact(1002);
 
 			//var contact = SqlRepository.ReadContact(2);
 			//Console.WriteLine(contact?.ToString());
-			Contact cont = new("54176413124", "Barne", "marne");
-			SqlRepository.UpdateContact(cont);
+			//Contact cont = new("54176413124", "Barne", "marne");
+			//SqlRepository.UpdateContact(cont);
 
+			//Contact JethroTull = new("10101010101", "Jethro", "Tull");
+			//JethroTull = SqlRepository.CreateContact(JethroTull);
+			//Console.WriteLine($"ID {JethroTull.Id}, {JethroTull}");
 
+			//Contact NewData = new("10101010101", "Jethro", "Tull");
+			//Console.WriteLine(SqlRepository.UpdateContact(NewData)); 
 
-
-            //Contact JethroTull = new("10101010101", "Jethro", "Tull");
-            //JethroTull = SqlRepository.CreateContact(JethroTull);
-            //Console.WriteLine($"ID {JethroTull.Id}, {JethroTull}");
-
-            //Contact NewData = new("10101010101", "Jethro", "Tull");
-            //Console.WriteLine(SqlRepository.UpdateContact(NewData)); 
+			SqlRepository.DeleteAddress(1);
         }
     }
 }
