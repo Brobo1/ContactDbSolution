@@ -59,9 +59,9 @@ namespace ContactDbLib {
 			using SqlConnection connection = new(_connectionString);
 			connection.Open();
 			using SqlCommand command = connection.CreateCommand();
-			command.CommandText = "DELETE FROM Contacts " +
+			command.CommandText = "DELETE FROM Contact \n" +
 			                      "WHERE id = @id";
-
+			command.Parameters.AddWithValue("@id", id);
 			int rowsAffected = command.ExecuteNonQuery();
 			if (rowsAffected >= 1) {
 				return true;
