@@ -123,7 +123,8 @@ namespace ContactDbLib {
 			
 		}
 		
-		public static bool UpdateContact(Contact contact) {
+		public static bool UpdateContact(Contact contact)
+		{
 			SqlConnection    connect = new(_connectionString);
 			using SqlCommand command = connect.CreateCommand();
 			command.CommandText = "update Contact \n"                                +
@@ -135,12 +136,28 @@ namespace ContactDbLib {
 			command.Parameters.AddWithValue("@lastName",  contact.LastName);
 			connect.Open();
 			
-			int           rowsAffected = command.ExecuteNonQuery();
+			int rowsAffected = command.ExecuteNonQuery();
 			
 			if (rowsAffected > 0) {
 				return true;
 			}
 			return false;
 		}
+
+		public static bool DeleteAddress(int id) 
+		{
+			SqlConnection connect = new(_connectionString);
+			using SqlCommand command = connect.CreateCommand();
+			command.CommandText = "DELETE FROM address \n" +
+				"WHERE id = @id";
+			command.Parameters.AddWithValue("@id", id);
+
+			int rowsAffected = command.ExecuteNonQuery();
+
+			if(rowsAffected  > 0 ) { return true;}
+			else { return false; }
+		
+		}
+
 	}
 }
