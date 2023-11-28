@@ -37,6 +37,14 @@ namespace ContactDbLib {
 			}
 			else { return -1; }
 		}
+		 static public Contact CreateContact(Contact contact) 
+		{
+			 contact.Id = CreateContact(contact.SSN, contact.FirstName, contact.LastName);
+
+			return contact;
+		}
+
+
 
 		static public List<Contact> ReadAllContacts() {
 			List<Contact> allContacts = new();
@@ -80,6 +88,7 @@ namespace ContactDbLib {
 				return null;
 			}
         }
+
 
         public static bool DeleteContact(int id) {
 			using SqlConnection connection = new(_connectionString);
