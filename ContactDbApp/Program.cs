@@ -27,7 +27,7 @@ namespace ContactDbApp
             //var contact = SqlRepository.ReadContact(2);
             //Console.WriteLine(contact?.ToString());
             Contact cont = new("54176413124", "Barne", "marne");
-            SqlRepository.UpdateContactNew(cont);
+            SqlRepository.UpdateContact(cont);
 
             Contact contact = new("10101010101", "Jethro", "Tull");
             contact = SqlRepository.CreateContact(contact);
