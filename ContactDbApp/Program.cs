@@ -38,7 +38,7 @@ namespace ContactDbApp {
 			//Contact NewData = new("10101010101", "Jethro", "Tull");
 			//Console.WriteLine(SqlRepository.UpdateContact(NewData)); 
 
-			SqlRepository.DeleteAddress(1);
+			//SqlRepository.DeleteAddress(1);
         }
     }
 }

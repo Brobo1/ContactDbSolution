@@ -13,7 +13,8 @@ namespace ContactDbLib {
 			"Database = ContactDb; "             +
 			"Integrated Security = true";
 
-		static public int CreateContact(string ssn, string firstName, string lastName) {
+        #region ContactMethods
+        static public int CreateContact(string ssn, string firstName, string lastName) {
 			using SqlConnection Connect = new(_connectionString);
 
 			SqlCommand MakeContact = Connect.CreateCommand();
@@ -137,8 +138,11 @@ namespace ContactDbLib {
 
 			return false;
 		}
+        #endregion
 
-		public static bool DeleteAddress(int id) 
+
+        #region AddressMethods
+        public static bool DeleteAddress(int id) 
 		{
 			SqlConnection connect = new(_connectionString);
 			using SqlCommand command = connect.CreateCommand();
@@ -154,5 +158,7 @@ namespace ContactDbLib {
 		
 		}
 
-	}
+
+        #endregion
+    }
 }
