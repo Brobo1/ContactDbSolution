@@ -58,7 +58,8 @@
 --INSERT INTO ContactInformation(Info,AddsReservartion,ContactId)
 --VALUES('Badstue','0',1),('Ski','1',2),('Rider','0',3),('Terningkast','1',4)
 
-
+--INSERT INTO Address (street, city, Zip)
+--VALUES ('Pitbull straat','Bodø','3333'),('Tupac alley','Lillehammer','2233'),('Diddey Boulevard','Vennesla','1134'),('Beastyboys vei','Siljan','8645');
 
 
 
