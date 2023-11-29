@@ -18,7 +18,7 @@
 --(
 --    Id               INT IDENTITY (1,1),
 --    Info             VARCHAR(128) not null,
---    AddsReservartion VARCHAR(128) not null,
+--    AddsReservation VARCHAR(128) not null,
 --    ContactId        INT          null,
 --    PRIMARY KEY (id),
 --    FOREIGN KEY (ContactId) REFERENCES Contact (Id),
@@ -55,10 +55,11 @@
 ----Lagre SQL for dette i et InsertInto.sql script!
 
 
---INSERT INTO ContactInformation(Info,AddsReservartion,ContactId)
+--INSERT INTO ContactInformation(Info,AddsReservation,ContactId)
 --VALUES('Badstue','0',1),('Ski','1',2),('Rider','0',3),('Terningkast','1',4)
 
-
+--INSERT INTO Address (street, city, Zip)
+--VALUES ('Pitbull straat','Bodø','3333'),('Tupac alley','Lillehammer','2233'),('Diddey Boulevard','Vennesla','1134'),('Beastyboys vei','Siljan','8645');
 
 
 
