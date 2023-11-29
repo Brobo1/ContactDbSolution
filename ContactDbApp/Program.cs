@@ -51,10 +51,11 @@ namespace ContactDbApp {
 			//newAddress = SqlRepository.CreateAddress(newAddress);
 			//Console.WriteLine($"{newAddress.Id}: {newAddress}");
 
-			//Console.WriteLine(SqlRepository.CreateContactInformation("blalba", true, 4));
+			Console.WriteLine(SqlRepository.CreateContactInformation("asfgre", true, 2));
 
-			//int newInfo = SqlRepository.CreateContactInformation("", false, 0);
-			//SqlRepository.ReadContactInformation(newInfo);
+			//int newInfo = SqlRepository.CreateContactInformation("dfdgpm", false, 3);
+			//Console.WriteLine(SqlRepository.ReadContactInformation(1));
+			
 		}
     }
 }
