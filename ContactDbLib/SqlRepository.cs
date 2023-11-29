@@ -321,7 +321,7 @@ namespace ContactDbLib
             SqlConnection connect = new(_connectionString);
             using SqlCommand command = connect.CreateCommand();
             command.CommandText = "UPDATE ContactInformation \n" +
-                                  "SET Street = @street, City = @city, Zip = @zip \n" +
+                                  "SET info = @info, AddsReservation = @AddsReservation, contactId = @contactFK \n" +
                                   "where Id = @id \n";
 
             command.Parameters.AddWithValue("@id", id);
