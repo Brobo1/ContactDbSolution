@@ -279,8 +279,18 @@ namespace ContactDbLib
 	        SqlConnection connect = new(_connectionString);
 	        SqlCommand    command = connect.CreateCommand();
 	        command.CommandText = "insert into ContactInformation(Info, AddsReservartion, ContactId)" +
-	                              "values(@info, @addsReservation, @contactId)";
-	        return 12;
+	                              "values(@info, @addsReservation, @contactId)"                       +
+	                              "select scope_identity() as lastId";
+	        command.Parameters.AddWithValue("@info", info);
+	        command.Parameters.AddWithValue("@addsReservation", addsReservation);
+	        command.Parameters.AddWithValue("@contactId", contactId);
+	        connect.Open();
+	        
+	        SqlDataReader reader = command.ExecuteReader();
+	        if (reader.Read()) {
+		        return (int)(decimal)reader[0];
+	        }
+	        return -1;
         }
 
         #endregion
