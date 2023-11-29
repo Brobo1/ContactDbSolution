@@ -272,5 +272,17 @@ namespace ContactDbLib
         }
 
         #endregion
+
+        #region ContactInformation
+
+        public static int CreateContactInformation(string info, bool addsReservation, int contactId) {
+	        SqlConnection connect = new(_connectionString);
+	        SqlCommand    command = connect.CreateCommand();
+	        command.CommandText = "insert into ContactInformation(Info, AddsReservartion, ContactId)" +
+	                              "values(@info, @addsReservation, @contactId)";
+	        return 12;
+        }
+
+        #endregion
     }
 }
