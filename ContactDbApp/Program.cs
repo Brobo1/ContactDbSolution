@@ -41,21 +41,20 @@ namespace ContactDbApp {
 			//SqlRepository.DeleteAddress(1);
 			//SqlRepository.CreateAddress("Kongsburger veien", "Kongsburger", "1653");
 			//SqlRepository.UpdateAddress(1, "kognsebgig", "oijergqwe", "1253");
-			
+
 			//SqlRepository.DeleteContactInformation(1);
 
 
 			//SqlRepository.CreateAddress("Maukenveien", "Skjold", "9066");
 
 			//Address newAddress = new("Street", "City", "ZIP00");
-            //newAddress = SqlRepository.CreateAddress(newAddress);
-            //Console.WriteLine($"{newAddress.Id}: {newAddress}");
+			//newAddress = SqlRepository.CreateAddress(newAddress);
+			//Console.WriteLine($"{newAddress.Id}: {newAddress}");
 
-            //Console.WriteLine(SqlRepository.CreateContactInformation("blalba", true, 4));
-            Console.WriteLine(SqlRepository.ReadContactInformation(1));
-            
-            
+			//Console.WriteLine(SqlRepository.CreateContactInformation("blalba", true, 4));
 
+			//int newInfo = SqlRepository.CreateContactInformation("", false, 0);
+			//SqlRepository.ReadContactInformation(newInfo);
 		}
     }
 }
