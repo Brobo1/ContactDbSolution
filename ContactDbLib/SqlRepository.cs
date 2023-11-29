@@ -298,7 +298,7 @@ namespace ContactDbLib
             using SqlConnection connection = new(_connectionString);
 
             using SqlCommand command = connection.CreateCommand();
-            command.CommandText = " SELECT Info, AddsResevation \n" +
+            command.CommandText = " SELECT Info, AddsReservation \n" +
                                   "FROM ContactInformation \n" +
                                   "Where Id = @id;";
 
