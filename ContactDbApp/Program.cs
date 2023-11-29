@@ -43,10 +43,12 @@ namespace ContactDbApp {
 			//SqlRepository.UpdateAddress(1, "kognsebgig", "oijergqwe", "1253");
 
 
-			
+
 			//SqlRepository.CreateAddress("Maukenveien", "Skjold", "9066");
-            
-            
+
+			//Address newAddress = new("Street", "City", "ZIP00");
+            //newAddress = SqlRepository.CreateAddress(newAddress);
+            //Console.WriteLine($"{newAddress.Id}: {newAddress}");
 
         }
     }
