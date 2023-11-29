@@ -238,7 +238,7 @@ namespace ContactDbLib
 		}
 		public static Address CreateAddress(Address address)
 		{
-			CreateAddress(address.Street, address.City, address.Zip);
+			address.Id = CreateAddress(address.Street, address.City, address.Zip);
 
 			return address;
 		}
