@@ -50,16 +50,19 @@
 --VALUES (28120123123, 'Arne', 'Bretting'),
 --       (9876512345, 'Ole Tobias', 'Badstue'),
 --       (2225558834, 'Arman', 'Armani'),
---       (435685336, 'Rene', 'Pathfinder')
+--       (435685336, 'Rene', 'Pathfinder');
 --
 ----Lagre SQL for dette i et InsertInto.sql script!
 
 
 --INSERT INTO ContactInformation(Info,AddsReservation,ContactId)
---VALUES('Badstue','0',1),('Ski','1',2),('Rider','0',3),('Terningkast','1',4)
+--VALUES('Badstue','0',1),('Ski','1',2),('Rider','0',3),('Terningkast','1',4);
 
 --INSERT INTO Address (street, city, Zip)
 --VALUES ('Pitbull straat','Bodø','3333'),('Tupac alley','Lillehammer','2233'),('Diddey Boulevard','Vennesla','1134'),('Beastyboys vei','Siljan','8645');
+
+--INSERT INTO ContactAddress(ContactId,AddressId)
+--VALUES(1,2),(2,5),(3,2),(4,4);
 
 
 
