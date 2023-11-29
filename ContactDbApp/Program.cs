@@ -53,8 +53,8 @@ namespace ContactDbApp {
 
 			//Console.WriteLine(SqlRepository.CreateContactInformation("blalba", true, 4));
 
-			//int newInfo = SqlRepository.CreateContactInformation("", false, 0);
-			//SqlRepository.ReadContactInformation(newInfo);
+			//var id = SqlRepository.CreateContactInformation("Information", true, 2);
+			//Console.WriteLine(SqlRepository.ReadContactInformation(id)?.ToString());
 		}
     }
 }
