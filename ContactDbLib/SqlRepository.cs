@@ -278,7 +278,7 @@ namespace ContactDbLib
         public static int CreateContactInformation(string info, bool addsReservation, int contactId) {
 	        SqlConnection connect = new(_connectionString);
 	        SqlCommand    command = connect.CreateCommand();
-	        command.CommandText = "insert into ContactInformation(Info, AddsReservartion, ContactId)" +
+	        command.CommandText = "insert into ContactInformation(Info, AddsReservation, ContactId)" +
 	                              "values(@info, @addsReservation, @contactId)"                       +
 	                              "select scope_identity() as lastId";
 	        command.Parameters.AddWithValue("@info", info);
