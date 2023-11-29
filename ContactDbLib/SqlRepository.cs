@@ -316,6 +316,30 @@ namespace ContactDbLib
             }
         }
 
+        public static bool UpdateContactInformation(int id, string info, bool addsReservation, int contactFk)
+        {
+            SqlConnection connect = new(_connectionString);
+            using SqlCommand command = connect.CreateCommand();
+            command.CommandText = "UPDATE ContactInformation \n" +
+                                  "SET Street = @street, City = @city, Zip = @zip \n" +
+                                  "where Id = @id \n";
+
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@info", info);
+            command.Parameters.AddWithValue("@AddsReservation", addsReservation);
+            command.Parameters.AddWithValue("@contactFk", contactFk);
+            connect.Open();
+
+            int rowsAffected = command.ExecuteNonQuery();
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         #endregion
     }
 }
