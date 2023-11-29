@@ -44,10 +44,12 @@ namespace ContactDbApp {
 			
 			//SqlRepository.DeleteContactInformation(1);
 
-			
+
 			//SqlRepository.CreateAddress("Maukenveien", "Skjold", "9066");
-            
-            
+
+			//Address newAddress = new("Street", "City", "ZIP00");
+            //newAddress = SqlRepository.CreateAddress(newAddress);
+            //Console.WriteLine($"{newAddress.Id}: {newAddress}");
 
         }
     }

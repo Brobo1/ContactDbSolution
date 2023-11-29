@@ -34,6 +34,16 @@
 --    PRIMARY KEY (Id)
 --)
 --
+
+--CREATE TABLE ContactAddress(
+--Id INT IDENTITY(1,1),
+--ContactId INT NULL,
+--AddressId INT NULL,
+--PRIMARY KEY (Id),
+--FOREIGN KEY (ContactId) REFERENCES Contact(Id),
+--FOREIGN KEY (AddressId) REFERENCES Address(Id),
+--);
+
 ----Legg inn minst tre rader i tabellen.
 --
 --INSERT INTO Contact(Ssn, FirstName, LastName)
