@@ -53,9 +53,10 @@ namespace ContactDbApp {
 
 			Console.WriteLine(SqlRepository.CreateContactInformation("asfgre", true, 2));
 
-			//int newInfo = SqlRepository.CreateContactInformation("dfdgpm", false, 3);
-			//Console.WriteLine(SqlRepository.ReadContactInformation(1));
+			//var id = SqlRepository.CreateContactInformation("Information", true, 2);
+			//Console.WriteLine(SqlRepository.ReadContactInformation(id)?.ToString());
 			
+			//SqlRepository.UpdateContactInformation(5, "Likes cats", false, 3);
 		}
     }
 }
