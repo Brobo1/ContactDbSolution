@@ -10,7 +10,10 @@
 			FirstName = firstName;
 			LastName  = lastName;
 		}
-
+		public Contact(string ssn, string firstName, string lastName, int id) 
+			: this(ssn, firstName, lastName) {
+			Id = id;
+		}
 		public override string ToString() {
 			return $"{SSN} {FirstName} {LastName}";
 		}
