@@ -283,6 +283,29 @@ namespace ContactDbLib
 	        return 12;
         }
 
+		static public ContactInformation? ReadContactInformation(int id)
+        {
+            using SqlConnection connection = new(_connectionString);
+
+            using SqlCommand command = connection.CreateCommand();
+            command.CommandText = " SELECT Info, AddsReservation \n" +
+                                  "FROM ContactInformation \n" +
+                                  "Where Id = @id;";
+
+            command.Parameters.AddWithValue("@id", id);
+            connection.Open();
+            using SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+				return new(reader[0].ToString() ?? "", reader[1].ToString() ?? "0");
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         #endregion
     }
 }
