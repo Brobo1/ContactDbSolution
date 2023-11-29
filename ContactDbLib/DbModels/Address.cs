@@ -11,7 +11,10 @@ public class Address {
 		City   = city;
 		Zip    = zip;
 	}
-
+	public Address(string street, string city, string zip, int id)
+	: this(street, city, zip) {
+		Id = id;
+	}
 	public override string ToString() {
 		return $"{City} {Zip} {Street}";
 	}
