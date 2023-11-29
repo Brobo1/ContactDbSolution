@@ -55,5 +55,10 @@
 ----Lagre SQL for dette i et InsertInto.sql script!
 
 
+--INSERT INTO ContactInformation(Info,AddsReservartion,ContactId)
+--VALUES('Badstue','0',1),('Ski','1',2),('Rider','0',3),('Terningkast','1',4)
+
+
+
 
 
