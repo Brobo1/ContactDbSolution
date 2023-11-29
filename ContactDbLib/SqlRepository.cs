@@ -113,7 +113,6 @@ namespace ContactDbLib {
 			if (rowsAffected > 0) {
 				return true;
 			}
-
 			return false;
 		}
 
