@@ -212,6 +212,27 @@ namespace ContactDbLib {
 			return address;
 		}
 
-		#endregion
-	}
+
+        public static bool DeleteContactInformation(int id)
+        {
+            SqlConnection connect = new(_connectionString);
+            using SqlCommand command = connect.CreateCommand();
+            command.CommandText = "DELETE FROM contactinformation \n" +
+                                  "WHERE id = @id";
+            command.Parameters.AddWithValue("@id", id);
+
+            connect.Open();
+            int rowsAffected = command.ExecuteNonQuery();
+
+            if (rowsAffected > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+    }
 }
