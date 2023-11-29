@@ -18,7 +18,7 @@
 --(
 --    Id               INT IDENTITY (1,1),
 --    Info             VARCHAR(128) not null,
---    AddsReservartion VARCHAR(128) not null,
+--    AddsReservation VARCHAR(128) not null,
 --    ContactId        INT          null,
 --    PRIMARY KEY (id),
 --    FOREIGN KEY (ContactId) REFERENCES Contact (Id),

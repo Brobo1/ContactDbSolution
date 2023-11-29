@@ -51,7 +51,9 @@ namespace ContactDbApp {
             //newAddress = SqlRepository.CreateAddress(newAddress);
             //Console.WriteLine($"{newAddress.Id}: {newAddress}");
 
-            Console.WriteLine(SqlRepository.CreateContactInformation("blalba", true, 4));
+            //Console.WriteLine(SqlRepository.CreateContactInformation("blalba", true, 4));
+            Console.WriteLine(SqlRepository.ReadContactInformation(1));
+            
             
 
 		}
