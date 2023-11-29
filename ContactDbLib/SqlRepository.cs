@@ -49,9 +49,9 @@ namespace ContactDbLib {
 			List<Contact> allContacts = new();
 
 			using SqlConnection Connect = new(_connectionString);
-			using SqlCommand          command = Connect.CreateCommand();
+			using SqlCommand    command = Connect.CreateCommand();
 			command.CommandText =
-				"SELECT SSN, FirstName, LastName \n" +
+				"SELECT SSN, FirstName, LastName, Id \n" +
 				"FROM Contact";
 
 			Connect.Open();
@@ -59,7 +59,7 @@ namespace ContactDbLib {
 
 			while (reader.Read()) {
 				allContacts.Add(new(reader[0].ToString() ?? "", reader[1].ToString() ?? "",
-				                    reader[2].ToString() ?? ""));
+				                    reader[2].ToString() ?? "", (int)reader[3]));
 			}
 
 			return allContacts;
@@ -117,10 +117,9 @@ namespace ContactDbLib {
 			return false;
 		}
 
-		public static bool UpdateContact(Contact contact)
-		{
+		public static bool UpdateContact(Contact contact) {
 			using SqlConnection connect = new(_connectionString);
-			using SqlCommand command = connect.CreateCommand();
+			using SqlCommand    command = connect.CreateCommand();
 			command.CommandText = "update Contact \n"                                   +
 			                      "set FirstName = @firstName, LastName = @lastName \n" +
 			                      "where Ssn = @ssn \n";
@@ -213,9 +212,11 @@ namespace ContactDbLib {
 		}
 
 		public static bool UpdateAddress(Address address) {
-			if (UpdateAddress(address.Id, address.Street, address.City, address.Zip) is true)
-			{ return true; }
-			else { return false; }
+			if (UpdateAddress(address.Id, address.Street, address.City, address.Zip) is true) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		public static bool DeleteContactInformation(int id) {
@@ -239,22 +240,22 @@ namespace ContactDbLib {
 
 		#region ContactInformation
 
-		public static int CreateContactInformation(string info, bool addsReservation, int contactId) 
-			{
+		public static int CreateContactInformation(string info, bool addsReservation, int contactId) {
 			using SqlConnection connect = new(_connectionString);
 			using SqlCommand    command = connect.CreateCommand();
 			command.CommandText = "insert into ContactInformation(Info, AddsReservation, ContactId)" +
-								  "values(@info, @addsReservation, @contactId)" +
-								  "select scope_identity() as lastId";
-			command.Parameters.AddWithValue("@info", info);
+			                      "values(@info, @addsReservation, @contactId)"                      +
+			                      "select scope_identity() as lastId";
+			command.Parameters.AddWithValue("@info",            info);
 			command.Parameters.AddWithValue("@addsReservation", addsReservation);
-			command.Parameters.AddWithValue("@contactId", contactId);
+			command.Parameters.AddWithValue("@contactId",       contactId);
 			connect.Open();
 
 			SqlDataReader reader = command.ExecuteReader();
 			if (reader.Read()) {
 				return (int)(decimal)reader[0];
 			}
+
 			return -1;
 		}
 
@@ -263,7 +264,7 @@ namespace ContactDbLib {
 
 			using SqlCommand command = connection.CreateCommand();
 			command.CommandText = " SELECT Id,Info, AddsReservation,ContactId \n" +
-			                      "FROM ContactInformation \n"       +
+			                      "FROM ContactInformation \n"                    +
 			                      "Where Id = @id;";
 
 			command.Parameters.AddWithValue("@id", id);
@@ -271,7 +272,7 @@ namespace ContactDbLib {
 			using SqlDataReader reader = command.ExecuteReader();
 
 			if (reader.Read()) {
-				return new((int)reader[0],reader[1].ToString() ?? "", reader[2].ToString() ?? "0", (int)reader[3]);
+				return new((int)reader[0], reader[1].ToString() ?? "", reader[2].ToString() ?? "0", (int)reader[3]);
 			} else {
 				return null;
 			}
@@ -281,15 +282,16 @@ namespace ContactDbLib {
 			List<ContactInformation> ContactInfo = new();
 
 			using SqlConnection Connection = new(_connectionString);
-			using SqlCommand command = Connection.CreateCommand();
+			using SqlCommand    command    = Connection.CreateCommand();
 			command.CommandText = "SELECT * \n" +
-				"FROM ContactInformation \n";
+			                      "FROM ContactInformation \n";
 			Connection.Open();
 			using SqlDataReader reader = command.ExecuteReader();
-			while (reader.Read())
-			{
-				ContactInfo.Add(new ContactInformation((int)reader[0], reader[1]?.ToString()?? "", reader[2]?.ToString()?? "", (int)reader[3]));
-            }
+			while (reader.Read()) {
+				ContactInfo.Add(new ContactInformation((int)reader[0], reader[1]?.ToString() ?? "",
+				                                       reader[2]?.ToString()                 ?? "", (int)reader[3]));
+			}
+
 			return ContactInfo;
 
 			#endregion

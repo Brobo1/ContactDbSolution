@@ -44,7 +44,6 @@ namespace ContactDbApp {
 
 			//SqlRepository.DeleteContactInformation(1);
 
-
 			//SqlRepository.CreateAddress("Maukenveien", "Skjold", "9066");
 
 			//Address newAddress = new("Street", "City", "ZIP00");
@@ -61,6 +60,18 @@ namespace ContactDbApp {
 
 			//ContactInformation? yasdf = SqlRepository.ReadContactInformation(1);
             //Console.WriteLine(yasdf.ToString());
-        }
+
+            var list = SqlRepository.ReadAllContacts();
+
+            foreach (var item in list) {
+	            Console.WriteLine(item.Id);
+            }
+
+            Console.WriteLine(SqlRepository.UpdateContact(list[0].Id, "Agus", "Scapusio"));
+            SqlRepository.UpdateContact(list[1].Id, "Arner", "Brettman");
+            SqlRepository.UpdateContact(list[2].Id, "Barne", "Arne");
+            SqlRepository.UpdateContact(list[3].Id, "Arnes", "Barne");
+
+		}
     }
 }
