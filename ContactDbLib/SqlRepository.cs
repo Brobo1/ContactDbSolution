@@ -212,6 +212,12 @@ namespace ContactDbLib {
 			return address;
 		}
 
+		public static Address UpdateAddress(Address address) 
+		{
+			UpdateAddress(address.Id, address.Street, address.City, address.Zip);
+
+			return address;
+		}
 		#endregion
 	}
 }
