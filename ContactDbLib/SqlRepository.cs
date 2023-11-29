@@ -205,6 +205,12 @@ namespace ContactDbLib {
 
 			return false;
 		}
+		public static Address CreateAddress(Address address) 
+		{
+			CreateAddress(address.Street, address.City, address.Zip);
+
+			return address;
+		}
 
 		#endregion
 	}
