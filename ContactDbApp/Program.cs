@@ -40,7 +40,14 @@ namespace ContactDbApp {
 
 			//SqlRepository.DeleteAddress(1);
 			//SqlRepository.CreateAddress("Kongsburger veien", "Kongsburger", "1653");
-			SqlRepository.UpdateAddress(1, "kognsebgig", "oijergqwe", "1253");
-		}
-	}
+			//SqlRepository.UpdateAddress(1, "kognsebgig", "oijergqwe", "1253");
+
+
+			
+			//SqlRepository.CreateAddress("Maukenveien", "Skjold", "9066");
+            
+            
+
+        }
+    }
 }
