@@ -113,6 +113,7 @@ namespace ContactDbLib {
 			if (rowsAffected > 0) {
 				return true;
 			}
+
 			return false;
 		}
 
@@ -292,8 +293,8 @@ namespace ContactDbLib {
 			}
 
 			return ContactInfo;
-
-			#endregion
 		}
+
+		#endregion
 	}
 }
