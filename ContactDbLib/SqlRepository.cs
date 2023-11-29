@@ -22,7 +22,7 @@ namespace ContactDbLib
 		{
 			using SqlConnection Connect = new(_connectionString);
 
-			SqlCommand MakeContact = Connect.CreateCommand();
+			using SqlCommand MakeContact = Connect.CreateCommand();
 			MakeContact.CommandText =
 				"INSERT INTO Contact(ssn,firstname,lastname)" +
 				"VALUES (@ssn,@firstName,@lastName) \n" +
@@ -57,7 +57,7 @@ namespace ContactDbLib
 			List<Contact> allContacts = new();
 
 			using SqlConnection Connect = new(_connectionString);
-			SqlCommand command = Connect.CreateCommand();
+			using SqlCommand command = Connect.CreateCommand();
 			command.CommandText =
 				"SELECT SSN, FirstName, LastName \n" +
 				"FROM Contact";
@@ -119,7 +119,7 @@ namespace ContactDbLib
 		{
 			using SqlConnection connect = new(_connectionString);
 			connect.Open();
-			SqlCommand command = connect.CreateCommand();
+			using SqlCommand command = connect.CreateCommand();
 			command.CommandText = "update Contact \n" +
 								  "set FirstName = @firstName, LastName = @lastName \n" +
 								  "where Id = @id";
@@ -138,7 +138,7 @@ namespace ContactDbLib
 
 		public static bool UpdateContact(Contact contact)
 		{
-			SqlConnection connect = new(_connectionString);
+			using SqlConnection connect = new(_connectionString);
 			using SqlCommand command = connect.CreateCommand();
 			command.CommandText = "update Contact \n" +
 								  "set FirstName = @firstName, LastName = @lastName \n" +
@@ -250,72 +250,90 @@ namespace ContactDbLib
 			else { return false; }
 		}
 
-        public static bool DeleteContactInformation(int id)
-        {
-            SqlConnection connect = new(_connectionString);
-            using SqlCommand command = connect.CreateCommand();
-            command.CommandText = "DELETE FROM contactinformation \n" +
-                                  "WHERE id = @id";
-            command.Parameters.AddWithValue("@id", id);
+		public static bool DeleteContactInformation(int id)
+		{
+			SqlConnection connect = new(_connectionString);
+			using SqlCommand command = connect.CreateCommand();
+			command.CommandText = "DELETE FROM contactinformation \n" +
+								  "WHERE id = @id";
+			command.Parameters.AddWithValue("@id", id);
 
-            connect.Open();
-            int rowsAffected = command.ExecuteNonQuery();
+			connect.Open();
+			int rowsAffected = command.ExecuteNonQuery();
 
-            if (rowsAffected > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+			if (rowsAffected > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 
-        #endregion
+		#endregion
 
-        #region ContactInformation
+		#region ContactInformation
 
-        public static int CreateContactInformation(string info, bool addsReservation, int contactId) {
-	        SqlConnection connect = new(_connectionString);
-	        SqlCommand    command = connect.CreateCommand();
-	        command.CommandText = "insert into ContactInformation(Info, AddsReservation, ContactId)" +
-	                              "values(@info, @addsReservation, @contactId)"                       +
-	                              "select scope_identity() as lastId";
-	        command.Parameters.AddWithValue("@info", info);
-	        command.Parameters.AddWithValue("@addsReservation", addsReservation);
-	        command.Parameters.AddWithValue("@contactId", contactId);
-	        connect.Open();
-	        
-	        SqlDataReader reader = command.ExecuteReader();
-	        if (reader.Read()) {
-		        return (int)(decimal)reader[0];
-	        }
-	        return -1;
-        }
+		public static int CreateContactInformation(string info, bool addsReservation, int contactId)
+		{
+			using SqlConnection connect = new(_connectionString);
+			using SqlCommand command = connect.CreateCommand();
+			command.CommandText = "insert into ContactInformation(Info, AddsReservation, ContactId)" +
+								  "values(@info, @addsReservation, @contactId)" +
+								  "select scope_identity() as lastId";
+			command.Parameters.AddWithValue("@info", info);
+			command.Parameters.AddWithValue("@addsReservation", addsReservation);
+			command.Parameters.AddWithValue("@contactId", contactId);
+			connect.Open();
+
+			SqlDataReader reader = command.ExecuteReader();
+			if (reader.Read())
+			{
+				return (int)(decimal)reader[0];
+			}
+			return -1;
+		}
 
 		static public ContactInformation? ReadContactInformation(int id)
-        {
-            using SqlConnection connection = new(_connectionString);
+		{
+			using SqlConnection connection = new(_connectionString);
 
-            using SqlCommand command = connection.CreateCommand();
-            command.CommandText = " SELECT Info, AddsReservation \n" +
-                                  "FROM ContactInformation \n" +
-                                  "Where Id = @id;";
+			using SqlCommand command = connection.CreateCommand();
+			command.CommandText = " SELECT Id,Info, AddsReservation,ContactId \n" +
+								  "FROM ContactInformation \n" +
+								  "Where Id = @id;";
 
-            command.Parameters.AddWithValue("@id", id);
-            connection.Open();
-            using SqlDataReader reader = command.ExecuteReader();
+			command.Parameters.AddWithValue("@id", id);
+			connection.Open();
+			using SqlDataReader reader = command.ExecuteReader();
 
-            if (reader.Read())
-            {
-				return new(reader[0].ToString() ?? "", reader[1].ToString() ?? "0");
+			if (reader.Read())
+			{
+				return new((int)reader[0],reader[1].ToString() ?? "", reader[2].ToString() ?? "0", (int)reader[3]);
+			}
+			else
+			{
+				return null;
+			}
+		}
+		static public List<ContactInformation> ReadContactInformationList()
+		{
+			List<ContactInformation> ContactInfo = new();
+
+			using SqlConnection Connection = new(_connectionString);
+			using SqlCommand command = Connection.CreateCommand();
+			command.CommandText = "SELECT * \n" +
+				"FROM ContactInformation \n";
+			Connection.Open();
+			using SqlDataReader reader = command.ExecuteReader();
+			while (reader.Read())
+			{
+				ContactInfo.Add(new ContactInformation((int)reader[0], reader[1]?.ToString()?? "", reader[2]?.ToString()?? "", (int)reader[3]));
             }
-            else
-            {
-                return null;
-            }
-        }
+			return ContactInfo;
 
-        #endregion
-    }
+			#endregion
+		}
+	}
 }

@@ -6,12 +6,15 @@ public class ContactInformation {
 	public string AddsReservation { get; set; }
 	public int    ContactFk       { get; set; }
 
-	public ContactInformation(string info, string addsReservation) {
+	public ContactInformation(int id,string info, string addsReservation,int contactFk) {
+		Id = id;
 		Info            = info;
 		AddsReservation = addsReservation;
+		ContactFk = contactFk;
 	}
 
-	public override string ToString() {
-		return $"{Info} {AddsReservation}";
+	public override string ToString() 
+	{
+		return $"{Id}, {Info}, {AddsReservation}, {ContactFk}";
 	}
 }

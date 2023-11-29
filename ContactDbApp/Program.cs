@@ -55,6 +55,12 @@ namespace ContactDbApp {
 
 			//int newInfo = SqlRepository.CreateContactInformation("", false, 0);
 			//SqlRepository.ReadContactInformation(newInfo);
-		}
+
+			//List<ContactInformation> x = SqlRepository.ReadContactInformationList();
+			//foreach(ContactInformation y in x) { Console.WriteLine(y.ToString()); }
+
+			//ContactInformation? yasdf = SqlRepository.ReadContactInformation(1);
+            //Console.WriteLine(yasdf.ToString());
+        }
     }
 }
