@@ -55,6 +55,8 @@ namespace ContactDbApp {
 
 			//var id = SqlRepository.CreateContactInformation("Information", true, 2);
 			//Console.WriteLine(SqlRepository.ReadContactInformation(id)?.ToString());
+			
+			//SqlRepository.UpdateContactInformation(5, "Likes cats", false, 3);
 		}
     }
 }
